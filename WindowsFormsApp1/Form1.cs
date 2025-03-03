@@ -93,5 +93,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            combobox_TenSV_TenSach();
+        }
     }
 }
