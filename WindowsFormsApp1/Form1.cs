@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
         {
             string ma_sach = tb1.Text;
             string ten_sach = tb2.Text;
-            string sql_Insert = "Insert into Sach (MaSach, TenSach) values(@ma_sach, @ten_sach)";
+            string sql_Insert = "SET IDENTITY_INSERT Sach ON; Insert into Sach (MaSach, TenSach) values(@ma_sach, @ten_sach); SET IDENTITY_INSERT Sach OFF;";
             using (SqlCommand cmd = new SqlCommand(sql_Insert, conn))
             {
                 cmd.Parameters.AddWithValue("@ma_sach", ma_sach);
@@ -86,10 +86,8 @@ namespace WindowsFormsApp1
                 cmd.ExecuteNonQuery();
                 LoadData();
             }
-
-
-
         }
+
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
